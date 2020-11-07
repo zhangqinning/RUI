@@ -1,3 +1,5 @@
+include ':lib_network'
+include ':lib_network'
 include ':lib_api'
 include ':mylibrary'
 include ':api'
