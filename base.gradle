@@ -1,0 +1,71 @@
+ext {
+
+    android = [
+            kotlin_version   : "1.4.10",
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.2",
+            minSdkVersion    : 16,
+            targetSdkVersion : 30,
+            versionCode      : 1,
+            versionName      : '1.0',
+            multiDexEnabled  : true
+    ]
+
+    depsVersion = [
+            appcompat            : '1.2.0',
+            magicindicator       : '1.5.0',
+            okhttp               : '3.3.0',
+            gson                 : '2.8.0',
+            glide                : '4.11.0',
+            glidecompiler        : '4.11.0',
+            rxjava               : '2.2.9',
+            rxandroid            : '2.1.1',
+            eventbus             : '3.1.1',
+            xpopup               : '2.0.8-rc5',
+            multidex             : '1.0.1',
+            easypermission       : '3.0.0',
+            tinypinyin           : '2.0.3',
+            videoplayer          : '7.2.4',
+            cvbanner             : '2.0.5',
+            cookiejar            : 'v1.0.1',
+            room_version         : "2.2.5",
+            retrofit2            : "2.6.0",
+            recyclerview         : '1.2.0-alpha05',
+            butterknife_compiler : '8.6.0',
+            retrofit_rxjava      : '2.5.0',
+            retrofit_converter   : '2.4.0',
+            BaseRVAdapterHelper  : '3.0.4',
+            view_pager_transforms: '1.2.32@aar'
+
+    ]
+    depsLibs = [
+            appcompat                    : "androidx.appcompat:appcompat:${depsVersion.appcompat}",
+            magicindicator               : "com.github.hackware1993:MagicIndicator:${depsVersion.magicindicator}",
+            okhttp                       : "com.squareup.okhttp3:okhttp:${depsVersion.okhttp}",
+            gson                         : "com.google.code.gson:gson:${depsVersion.gson}",
+            glide                        : "com.github.bumptech.glide:glide:${depsVersion.glide}",
+            glidecompiler                : "com.github.bumptech.glide:compiler:${depsVersion.glidecompiler}",
+            rxjava                       : "io.reactivex.rxjava2:rxjava:${depsVersion.rxjava}",
+            rxandroid                    : "io.reactivex.rxjava2:rxandroid:${depsVersion.rxandroid}",
+            eventbus                     : "org.greenrobot:eventbus:${depsVersion.eventbus}",
+            multidex                     : "com.android.support:multidex:${depsVersion.multidex}",
+            easypermission               : "pub.devrel:easypermissions:${depsVersion.easypermission}",
+            recyclerview                 : "androidx.recyclerview:recyclerview:${depsVersion.recyclerview}",
+            tinypinyin                   : "com.github.promeg:tinypinyin:${depsVersion.tinypinyin}",
+            videoplayer                  : "cn.jzvd:jiaozivideoplayer:${depsVersion.videoplayer}",
+            xpopup                       : "com.lxj:xpopup:${depsVersion.xpopup}",
+            vptransforms                 : "com.ToxicBakery.viewpager.transforms:view-pager-transforms:${depsVersion.view_pager_transforms}",
+            cvbanner                     : "com.bigkoo:convenientbanner:${depsVersion.cvbanner}",
+            room                         : "androidx.room:room-runtime:${depsVersion.room_version}",
+            room_rxjava2                 : "androidx.room:room-rxjava2:${depsVersion.room_version}",
+            room_compiler                : "androidx.room:room-compiler:${depsVersion.room_version}",
+            room_guava                   : "androidx.room:room-guava:${depsVersion.room_version}",
+            cookieJar                    : "com.github.franmontiel:PersistentCookieJar:${depsVersion.cookiejar}",
+            retrofit                     : "com.squareup.retrofit2:retrofit:${depsVersion.retrofit2}",
+            retrofit_gson                : "com.squareup.retrofit2:converter-gson:${depsVersion.retrofit_converter}",
+            retrofit_rxjava2             : "com.squareup.retrofit2:adapter-rxjava2:${depsVersion.retrofit_rxjava}",
+            BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:${depsVersion.BaseRVAdapterHelper}",
+            butterknife_compiler         : "com.jakewharton:butterknife-compiler:${depsVersion.butterknife_compiler}",
+    ]
+
+}

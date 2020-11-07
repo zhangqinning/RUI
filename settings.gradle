@@ -1,3 +1,5 @@
+include ':lib_api'
+include ':mylibrary'
 include ':api'
 include ':app'
 rootProject.name = "RUI"
