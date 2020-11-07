@@ -43,4 +43,5 @@ dependencies {
 
     implementation this.rootProject.depsLibs.rxjava
     implementation this.rootProject.depsLibs.rxandroid
+    implementation project(path: ':lib_api')
 }
