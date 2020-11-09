@@ -4,7 +4,7 @@ ext {
             kotlin_version   : "1.4.10",
             compileSdkVersion: 30,
             buildToolsVersion: "30.0.2",
-            minSdkVersion    : 16,
+            minSdkVersion    : 24,
             targetSdkVersion : 30,
             versionCode      : 1,
             versionName      : '1.0',

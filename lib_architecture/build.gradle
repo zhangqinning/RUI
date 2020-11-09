@@ -5,15 +5,16 @@ plugins {
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
-    buildToolsVersion "30.0.2"
+    buildToolsVersion rootProject.android.buildToolsVersion
 
     defaultConfig {
-        applicationId rootProject.android.applicationId
         minSdkVersion rootProject.android.minSdkVersion
         targetSdkVersion rootProject.android.targetSdkVersion
         versionCode rootProject.android.versionCode
         versionName rootProject.android.versionName
-        multiDexEnabled rootProject.android.multiDexEnabled
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,12 +38,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
-    implementation this.rootProject.depsLibs.retrofit
-    implementation this.rootProject.depsLibs.retrofit_gson
-    implementation this.rootProject.depsLibs.retrofit_rxjava
-
-    implementation this.rootProject.depsLibs.rxjava
-    implementation this.rootProject.depsLibs.rxandroid
-    implementation project(path: ':lib_api')
-    implementation project(path: ':lib_architecture')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
