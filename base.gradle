@@ -63,7 +63,7 @@ ext {
             cookieJar                    : "com.github.franmontiel:PersistentCookieJar:${depsVersion.cookiejar}",
             retrofit                     : "com.squareup.retrofit2:retrofit:${depsVersion.retrofit2}",
             retrofit_gson                : "com.squareup.retrofit2:converter-gson:${depsVersion.retrofit_converter}",
-            retrofit_rxjava             : "com.squareup.retrofit2:adapter-rxjava3:${depsVersion.retrofit_rxjava}",
+            retrofit_rxjava              : "com.squareup.retrofit2:adapter-rxjava2:${depsVersion.retrofit_rxjava}",
             BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:${depsVersion.BaseRVAdapterHelper}",
             butterknife_compiler         : "com.jakewharton:butterknife-compiler:${depsVersion.butterknife_compiler}",
     ]

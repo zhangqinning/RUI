@@ -41,6 +41,7 @@ dependencies {
 
     implementation project(path: ':lib_architecture')
     implementation project(path: ':lib_api')
+    implementation project(path: ':lib_network')
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
