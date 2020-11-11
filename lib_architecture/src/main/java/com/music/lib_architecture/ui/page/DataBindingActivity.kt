@@ -8,27 +8,29 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.keyIterator
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.lib_architecture.R
 
-open class DataBindingActivity : AppCompatActivity() {
+abstract class DataBindingActivity : AppCompatActivity() {
 
     private val mActivityViewModelProvider: ViewModelProvider by lazy { ViewModelProvider(this) }
     private val mApplicationViewModelProvider: ViewModelProvider by lazy {
         ViewModelProvider(
-            applicationContext as BaseApplication,
-            getAppFactory(this)
+                applicationContext as BaseApplication,
+                getAppFactory(this)
         )
     }
 
     lateinit var mBinding: ViewDataBinding
 
-    open fun initViewModel() {}
-    open fun getDataBindingConfig(): DataBindingConfig {}
+    abstract fun initViewModel()
+    abstract fun getDataBindingConfig(): DataBindingConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +39,8 @@ open class DataBindingActivity : AppCompatActivity() {
         val dataBindingConfig = getDataBindingConfig()
 
         val binding: ViewDataBinding = DataBindingUtil.setContentView(
-            this,
-            dataBindingConfig.layout
+                this,
+                dataBindingConfig.layout
         )
         binding.lifecycleOwner = this
         binding.setVariable(dataBindingConfig.vmVariableId, dataBindingConfig.stateViewModel)
@@ -56,6 +58,8 @@ open class DataBindingActivity : AppCompatActivity() {
             setText(R.string.debug_activity_databinding_warning)
         }
     }
+
+    fun <T : ViewModel> getActivityViewModel(@NonNull modelClass: Class<T>) = mActivityViewModelProvider.get(modelClass)
 
     fun getBinding(): ViewDataBinding {
         if (isDebug()) {
@@ -93,10 +97,10 @@ open class DataBindingActivity : AppCompatActivity() {
 
     fun checkApplication(activity: Activity): Application {
         return activity.application
-            ?: throw IllegalStateException(
-                "Your activity/fragment is not yet attached to "
-                        + "Application. You can't request ViewModel before onCreate call."
-            )
+                ?: throw IllegalStateException(
+                        "Your activity/fragment is not yet attached to "
+                                + "Application. You can't request ViewModel before onCreate call."
+                )
     }
 
 
