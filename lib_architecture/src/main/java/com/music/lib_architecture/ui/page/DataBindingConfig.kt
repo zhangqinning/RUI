@@ -8,7 +8,7 @@ data class DataBindingConfig(
     val vmVariableId: Int,
     val stateViewModel: ViewModel,
 ) {
-    private val bindingParams = SparseArray<Any>()
+    val bindingParams = SparseArray<Any>()
 
     fun addBindingParam(variableId: Int, any: Any): DataBindingConfig {
         if (bindingParams[variableId] == null) {

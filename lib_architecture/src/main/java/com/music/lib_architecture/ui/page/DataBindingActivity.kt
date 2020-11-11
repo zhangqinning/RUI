@@ -1,48 +1,65 @@
 package com.music.lib_architecture.ui.page
 
+import android.app.Activity
+import android.app.Application
 import android.content.pm.ApplicationInfo
 import android.graphics.Color
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.keyIterator
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import com.example.lib_architecture.R
 
 open class DataBindingActivity : AppCompatActivity() {
 
-    private val mActivityProvider:ViewModelProvider
-    val mFactory:ViewModelProvider.Factory
-    val mBinding: ViewDataBinding
-    var mTvStrictModeTip: TextView
+    private val mActivityViewModelProvider: ViewModelProvider by lazy { ViewModelProvider(this) }
+    private val mApplicationViewModelProvider: ViewModelProvider by lazy {
+        ViewModelProvider(
+            applicationContext as BaseApplication,
+            getAppFactory(this)
+        )
+    }
 
-    open fun initViewModle()
-    open fun getDataBindingConfig():DataBindingConfig
+    lateinit var mBinding: ViewDataBinding
+
+    open fun initViewModel() {}
+    open fun getDataBindingConfig(): DataBindingConfig {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initViewModle()
+        initViewModel()
         val dataBindingConfig = getDataBindingConfig()
 
-        val binding:ViewDataBinding = DataBindingUtil.setContentView(this,
-            dataBindingConfig.layout)
+        val binding: ViewDataBinding = DataBindingUtil.setContentView(
+            this,
+            dataBindingConfig.layout
+        )
         binding.lifecycleOwner = this
+        binding.setVariable(dataBindingConfig.vmVariableId, dataBindingConfig.stateViewModel)
+        for (i in dataBindingConfig.bindingParams.keyIterator()) {
+            binding.setVariable(i, dataBindingConfig.bindingParams[i])
+        }
+        mBinding = binding
     }
-\
 
-    protected open fun getBinding(): ViewDataBinding? {
-        if (isDebug() && mBinding != null) {
-            if (mTvStrictModeTip == null) {
-                mTvStrictModeTip = TextView(applicationContext)
-                mTvStrictModeTip.alpha = 0.5f
-                mTvStrictModeTip.textSize = 16f
-                mTvStrictModeTip.setBackgroundColor(Color.WHITE)
-                mTvStrictModeTip.setText(R.string.debug_activity_databinding_warning)
-                (mBinding.getRoot() as ViewGroup).addView(mTvStrictModeTip)
-            }
+    private val mTvStrictModeTip: TextView by lazy {
+        TextView(applicationContext).apply {
+            alpha = 0.5f
+            textSize = 16f
+            setBackgroundColor(Color.WHITE)
+            setText(R.string.debug_activity_databinding_warning)
+        }
+    }
+
+    fun getBinding(): ViewDataBinding {
+        if (isDebug()) {
+            (mBinding.root as ViewGroup).addView(mTvStrictModeTip)
         }
         return mBinding
     }
@@ -51,4 +68,36 @@ open class DataBindingActivity : AppCompatActivity() {
         return applicationContext.applicationInfo != null &&
                 applicationContext.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
     }
+
+
+    protected open fun showLongToast(text: String?) {
+        Toast.makeText(applicationContext, text, Toast.LENGTH_LONG).show()
+    }
+
+    protected open fun showShortToast(text: String?) {
+        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
+    }
+
+    protected open fun showLongToast(stringRes: Int) {
+        showLongToast(applicationContext.getString(stringRes))
+    }
+
+    protected open fun showShortToast(stringRes: Int) {
+        showShortToast(applicationContext.getString(stringRes))
+    }
+
+    fun getAppFactory(activity: Activity): ViewModelProvider.Factory {
+        val application: Application = checkApplication(activity)
+        return ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+    }
+
+    fun checkApplication(activity: Activity): Application {
+        return activity.application
+            ?: throw IllegalStateException(
+                "Your activity/fragment is not yet attached to "
+                        + "Application. You can't request ViewModel before onCreate call."
+            )
+    }
+
+
 }

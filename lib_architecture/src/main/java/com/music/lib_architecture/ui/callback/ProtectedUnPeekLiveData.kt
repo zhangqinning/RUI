@@ -6,7 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 
-public open class ProtectedUnPeekLiveData<T> : LiveData<T>() {
+open class ProtectedUnPeekLiveData<T> : LiveData<T>() {
     var isAllowNullValue = false
 
     var observers = HashMap<Int, Boolean>()
