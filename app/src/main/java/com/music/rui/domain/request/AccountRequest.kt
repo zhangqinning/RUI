@@ -32,10 +32,7 @@ class AccountRequest : BaseRequest() {
 
                 override fun onSubscribe(d: Disposable?) {
                 }
-
             })
-
     }
-
 
 }
