@@ -29,8 +29,8 @@ abstract class DataBindingFragment : Fragment() {
     private val activityProvider by lazy { ViewModelProvider(requireActivity()) }
     private val mApplicationViewModelProvider: ViewModelProvider by lazy {
         ViewModelProvider(
-            requireActivity().applicationContext as BaseApplication,
-            getAppFactory(requireActivity())
+                requireActivity().applicationContext as BaseApplication,
+                getAppFactory(requireActivity())
         )
     }
 
@@ -39,26 +39,22 @@ abstract class DataBindingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViewModel()
-
-        val dataBindingConfig = getDataBindingConfig()
-
-
     }
 
     abstract fun getDataBindingConfig(): DataBindingConfig
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         val dataBindingConfig = getDataBindingConfig()
 
         val binding = DataBindingUtil.inflate<ViewDataBinding>(
-            inflater,
-            dataBindingConfig.layout,
-            container,
-            false
+                inflater,
+                dataBindingConfig.layout,
+                container,
+                false
         )
         binding.lifecycleOwner = this
         binding.setVariable(dataBindingConfig.vmVariableId, dataBindingConfig.stateViewModel)
@@ -85,7 +81,7 @@ abstract class DataBindingFragment : Fragment() {
     open fun isDebug(): Boolean {
         return requireActivity().applicationContext.applicationInfo != null &&
                 requireActivity().applicationContext
-                    .applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+                        .applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
     }
 
     protected open fun showLongToast(text: String?) {
@@ -105,10 +101,10 @@ abstract class DataBindingFragment : Fragment() {
     }
 
     fun <T : ViewModel> getFragmentViewModle(@NonNull modelClass: Class<T>) =
-        fragmentProvider.get(modelClass)
+            fragmentProvider.get(modelClass)
 
     fun <T : ViewModel> getActivityViewModle(@NonNull modelClass: Class<T>) =
-        activityProvider.get(modelClass)
+            activityProvider.get(modelClass)
 
     fun getAppFactory(activity: Activity): ViewModelProvider.Factory {
         requireActivity()
@@ -117,9 +113,9 @@ abstract class DataBindingFragment : Fragment() {
 
     private fun checkApplication(activity: Activity): Application {
         return activity.application
-            ?: throw IllegalStateException(
-                "Your activity/fragment is not yet attached to "
-                        + "Application. You can't request ViewModel before onCreate call."
-            )
+                ?: throw IllegalStateException(
+                        "Your activity/fragment is not yet attached to "
+                                + "Application. You can't request ViewModel before onCreate call."
+                )
     }
 }

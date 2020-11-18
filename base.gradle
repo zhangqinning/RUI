@@ -36,7 +36,6 @@ ext {
             retrofit_converter   : '2.4.0',
             BaseRVAdapterHelper  : '3.0.4',
             view_pager_transforms: '1.2.32@aar'
-
     ]
     depsLibs = [
             appcompat                    : "androidx.appcompat:appcompat:${depsVersion.appcompat}",
