@@ -5,7 +5,7 @@ data class LoginBean(
     var code: Int,
     var account: AccountBean,
     var token: String,
-    var prifile: Profile,
+    var profile: Profile,
     var bindings: List<BindingBean>
 )
 

@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.android.compileSdkVersion
-    buildToolsVersion rootProject.android.buildToolsVersion
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
-        minSdkVersion rootProject.android.minSdkVersion
-        targetSdkVersion rootProject.android.targetSdkVersion
-        versionCode rootProject.android.versionCode
-        versionName rootProject.android.versionName
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -42,10 +42,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    api rootProject.depsLibs.gson
-    implementation this.rootProject.depsLibs.BaseRecyclerViewAdapterHelper
-
-    implementation this.rootProject.depsLibs.room
-    implementation this.rootProject.depsLibs.room_rxjava2
-    annotationProcessor this.rootProject.depsLibs.room_compiler
+    //glide相关依赖
+    implementation rootProject.depsLibs.glide
+    annotationProcessor rootProject.depsLibs.glidecompiler
+    //占位编译  编译时有效不会参与打包
+    compileOnly rootProject.depsLibs.rxjava
+    compileOnly rootProject.depsLibs.rxandroid
 }
