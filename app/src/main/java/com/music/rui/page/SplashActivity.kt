@@ -27,11 +27,11 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        Timber.d("splash onCreate")
+
         BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
 
         setContentView(R.layout.delegate_splash)
-
+        Timber.d("splash onCreate ")
         if (!EasyPermissions.hasPermissions(this, *perms)) {
             EasyPermissions.requestPermissions(this, "开权限", 1, *perms)
         } else {
@@ -40,6 +40,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
     }
 
     private fun jumpIntoMainActivity() {
+        Timber.d("splash jumpIntoMainActivity ")
         Observable.timer(2, TimeUnit.SECONDS).subscribe {
             val preferenceUtil = SharePreferenceUtil.getInstance(Utils.getApp())
             if (preferenceUtil.localMusicCount == -1) {
