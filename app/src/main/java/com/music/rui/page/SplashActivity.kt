@@ -28,15 +28,15 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
-        BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
+//        BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
 
         setContentView(R.layout.delegate_splash)
-        Timber.d("splash onCreate ")
-        if (!EasyPermissions.hasPermissions(this, *perms)) {
-            EasyPermissions.requestPermissions(this, "开权限", 1, *perms)
-        } else {
-            jumpIntoMainActivity()
-        }
+//        Timber.d("splash onCreate ")
+//        if (!EasyPermissions.hasPermissions(this, *perms)) {
+//            EasyPermissions.requestPermissions(this, "开权限", 1, *perms)
+//        } else {
+//            jumpIntoMainActivity()
+//        }
     }
 
     private fun jumpIntoMainActivity() {
