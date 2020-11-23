@@ -35,7 +35,8 @@ ext {
             retrofit_rxjava      : '2.5.0',
             retrofit_converter   : '2.4.0',
             BaseRVAdapterHelper  : '3.0.4',
-            view_pager_transforms: '1.2.32@aar'
+            view_pager_transforms: '1.2.32@aar',
+            timber               : "4.7.1"
     ]
     depsLibs = [
             appcompat                    : "androidx.appcompat:appcompat:${depsVersion.appcompat}",
@@ -65,6 +66,7 @@ ext {
             retrofit_rxjava              : "com.squareup.retrofit2:adapter-rxjava2:${depsVersion.retrofit_rxjava}",
             BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:${depsVersion.BaseRVAdapterHelper}",
             butterknife_compiler         : "com.jakewharton:butterknife-compiler:${depsVersion.butterknife_compiler}",
+            timber                       : "com.jakewharton.timber:timber:${depsVersion.timber}"
     ]
 
 }

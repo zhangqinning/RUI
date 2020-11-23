@@ -15,6 +15,7 @@ import com.music.rui.page.login.LoginActivity
 import io.reactivex.rxjava3.core.Observable
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
@@ -26,6 +27,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
+        Timber.d("splash onCreate")
         BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
 
         setContentView(R.layout.delegate_splash)

@@ -54,4 +54,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation this.rootProject.depsLibs.easypermission
+    api this.rootProject.depsLibs.timber
 }
