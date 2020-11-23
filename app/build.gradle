@@ -14,17 +14,31 @@ android {
         targetSdkVersion rootProject.android.targetSdkVersion
         versionCode rootProject.android.versionCode
         versionName rootProject.android.versionName
-
+        setProperty('archivesBaseName', "RUI-${versionName}-${versionCode}")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildFeatures {
         dataBinding true
     }
 
+    signingConfigs {
+        config {
+            storeFile file("rui.keystore")
+            storePassword "zr34qn"
+            keyAlias "rui"
+            keyPassword "zr34qn"
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.config
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
