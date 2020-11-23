@@ -2,7 +2,6 @@ package com.music.rui.page
 
 import android.Manifest
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -12,8 +11,7 @@ import com.music.lib_architecture.utils.Utils
 import com.music.lib_common_ui.utils.SharePreferenceUtil
 import com.music.rui.MainActivity
 import com.music.rui.R
-import com.music.rui.util.MusicUtils
-import com.music.rui.util.PreferencesUtil
+import com.music.rui.page.login.LoginActivity
 import io.reactivex.rxjava3.core.Observable
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
@@ -40,15 +38,15 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
     }
 
     private fun jumpIntoMainActivity() {
-        val subscribe = Observable.timer(2, TimeUnit.SECONDS).subscribe {
+        Observable.timer(2, TimeUnit.SECONDS).subscribe {
             val preferenceUtil = SharePreferenceUtil.getInstance(Utils.getApp())
             if (preferenceUtil.localMusicCount == -1) {
-                preferenceUtil.saveLocalMusicCount(
-                    MusicUtils.queryMusicSize(
-                        Utils.getApp(),
-                        MusicUtils.START_FROM_LOCAL
-                    )
-                )
+//                preferenceUtil.saveLocalMusicCount(
+//                    MusicUtils.queryMusicSize(
+//                        Utils.getApp(),
+//                        MusicUtils.START_FROM_LOCAL
+//                    )
+//                )
             }
             val authToken = preferenceUtil.getAuthToken("")
             if (authToken.isNullOrEmpty()) {

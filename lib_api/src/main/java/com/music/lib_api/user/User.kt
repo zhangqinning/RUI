@@ -1,6 +1,7 @@
 package com.music.lib_api.user
 
 data class LoginBean(
+    var msg: String,
     var LoginType: Int,
     var code: Int,
     var account: AccountBean,

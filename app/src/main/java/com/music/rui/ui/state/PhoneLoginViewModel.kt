@@ -6,17 +6,35 @@ import androidx.lifecycle.ViewModel
 import com.music.rui.domain.request.AccountRequest
 
 class PhoneLoginViewModel : ViewModel() {
-
-    val phone = ObservableBoolean()
-    val password = ObservableField<String>()
+    //输入手机号界面
     val showInputPhoneView = ObservableBoolean()
+
+    //输入密码界面
     val showInputPasswordView = ObservableBoolean()
+
+    //忘记密码界面
     val showForgetPasswordView = ObservableBoolean()
+
+    //显示验证码界面
     val showCaptureView = ObservableBoolean()
+
+    //使能重新获取验证码按钮
     val enableCaptureButton = ObservableBoolean()
+
+    //密码hint
     val passwordHint = ObservableField<String>()
+
+    //界面标题
     val title = ObservableField<String>()
+
+    //1min 倒计时输入验证码
     val countDownText = ObservableField<String>()
+
+    //手机号
+    val phone = ObservableField<String>()
+
+    //密码
+    val password = ObservableField<String>()
 
     val accountRequest = AccountRequest()
 

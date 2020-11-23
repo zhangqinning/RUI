@@ -82,9 +82,9 @@
             android:layout_alignTop="@+id/tv_rule"
             android:layout_alignBottom="@+id/tv_rule"
             android:layout_margin="1dp"
-            android:layout_toLeftOf="@+id/tv_rule"
+            android:layout_toStartOf="@+id/tv_rule"
             android:buttonTint="@color/white"
-            android:checked="@={vm.argeeRule}" />
+            android:checked="@={vm.agreeRule}" />
 
         <TextView
             android:id="@+id/tv_rule"
