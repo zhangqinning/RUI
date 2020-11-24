@@ -6,8 +6,7 @@ import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
-const val BASE_URL = "http://62.234.57.125:3000/"
+const val BASE_URL = "http://192.168.239.108:3000/"
 
 interface ApiService {
 

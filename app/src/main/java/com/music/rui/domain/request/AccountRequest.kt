@@ -9,6 +9,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import timber.log.Timber
 
 class AccountRequest : BaseRequest() {
     val loginData = MutableLiveData<LoginBean>()
@@ -22,14 +23,16 @@ class AccountRequest : BaseRequest() {
 
 
                 override fun onNext(loginBean: LoginBean) {
+                    Timber.v(loginBean.toString())
                     loginData.postValue(loginBean)
                 }
 
                 override fun onError(e: Throwable?) {
+                    Timber.v("requestLogin error ${e.toString()}")
                 }
 
                 override fun onComplete() {
-
+                    Timber.v("requestLogin onComplete")
                 }
 
                 override fun onSubscribe(d: Disposable?) {
