@@ -32,7 +32,7 @@ ext {
             retrofit2            : "2.9.0",
             recyclerview         : '1.2.0-alpha05',
             butterknife_compiler : '8.6.0',
-            retrofit_rxjava      : '2.5.0',
+            retrofit_rxjava      : '2.9.0',
             retrofit_converter   : '2.4.0',
             BaseRVAdapterHelper  : '3.0.4',
             view_pager_transforms: '1.2.32@aar',
@@ -63,7 +63,7 @@ ext {
             cookieJar                    : "com.github.franmontiel:PersistentCookieJar:${depsVersion.cookiejar}",
             retrofit                     : "com.squareup.retrofit2:retrofit:${depsVersion.retrofit2}",
             retrofit_gson                : "com.squareup.retrofit2:converter-gson:${depsVersion.retrofit_converter}",
-            retrofit_rxjava              : "com.squareup.retrofit2:adapter-rxjava2:${depsVersion.retrofit_rxjava}",
+            retrofit_rxjava              : "com.squareup.retrofit2:adapter-rxjava3:${depsVersion.retrofit_rxjava}",
             BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:${depsVersion.BaseRVAdapterHelper}",
             butterknife_compiler         : "com.jakewharton:butterknife-compiler:${depsVersion.butterknife_compiler}",
             timber                       : "com.jakewharton.timber:timber:${depsVersion.timber}"

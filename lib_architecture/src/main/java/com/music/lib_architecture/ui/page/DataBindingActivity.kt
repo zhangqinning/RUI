@@ -22,8 +22,8 @@ abstract class DataBindingActivity : AppCompatActivity() {
     private val mActivityViewModelProvider: ViewModelProvider by lazy { ViewModelProvider(this) }
     private val mApplicationViewModelProvider: ViewModelProvider by lazy {
         ViewModelProvider(
-                applicationContext as BaseApplication,
-                getAppFactory(this)
+            applicationContext as BaseApplication,
+            getAppFactory(this)
         )
     }
 
@@ -39,8 +39,8 @@ abstract class DataBindingActivity : AppCompatActivity() {
         val dataBindingConfig = getDataBindingConfig()
 
         val binding: ViewDataBinding = DataBindingUtil.setContentView(
-                this,
-                dataBindingConfig.layout
+            this,
+            dataBindingConfig.layout
         )
         binding.lifecycleOwner = this
         binding.setVariable(dataBindingConfig.vmVariableId, dataBindingConfig.stateViewModel)
@@ -59,7 +59,8 @@ abstract class DataBindingActivity : AppCompatActivity() {
         }
     }
 
-    fun <T : ViewModel> getActivityViewModel(@NonNull modelClass: Class<T>) = mActivityViewModelProvider.get(modelClass)
+    fun <T : ViewModel> getActivityViewModel(@NonNull modelClass: Class<T>) =
+        mActivityViewModelProvider.get(modelClass)
 
     fun getBinding(): ViewDataBinding {
         if (isDebug()) {
@@ -97,10 +98,10 @@ abstract class DataBindingActivity : AppCompatActivity() {
 
     fun checkApplication(activity: Activity): Application {
         return activity.application
-                ?: throw IllegalStateException(
-                        "Your activity/fragment is not yet attached to "
-                                + "Application. You can't request ViewModel before onCreate call."
-                )
+            ?: throw IllegalStateException(
+                "Your activity/fragment is not yet attached to "
+                        + "Application. You can't request ViewModel before onCreate call."
+            )
     }
 
 

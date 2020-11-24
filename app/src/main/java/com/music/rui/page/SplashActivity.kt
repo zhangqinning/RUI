@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.music.lib_architecture.utils.BarUtils
 import com.music.lib_architecture.utils.Utils
@@ -19,24 +18,24 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
+
     var perms = arrayOf(
         Manifest.permission.READ_PHONE_STATE,
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-//        BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
-
+        BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
         setContentView(R.layout.delegate_splash)
-//        Timber.d("splash onCreate ")
-//        if (!EasyPermissions.hasPermissions(this, *perms)) {
-//            EasyPermissions.requestPermissions(this, "开权限", 1, *perms)
-//        } else {
-//            jumpIntoMainActivity()
-//        }
+
+        if (!EasyPermissions.hasPermissions(this, *perms)) {
+            EasyPermissions.requestPermissions(this, "开权限", 1, *perms)
+        } else {
+            jumpIntoMainActivity()
+        }
     }
 
     private fun jumpIntoMainActivity() {
@@ -84,5 +83,4 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
             AppSettingsDialog.Builder(this).build().show()
         }
     }
-
 }
