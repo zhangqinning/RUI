@@ -1,8 +1,8 @@
 package com.music.rui.domain.request
 
 import androidx.lifecycle.MutableLiveData
-import com.music.lib_api.notification.CommonMessageBean
-import com.music.lib_api.user.LoginBean
+import com.music.lib_api.model.notification.CommonMessageBean
+import com.music.lib_api.model.user.LoginBean
 import com.music.lib_architecture.domain.request.BaseRequest
 import com.music.lib_network.retrofit.ApiEngine
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
