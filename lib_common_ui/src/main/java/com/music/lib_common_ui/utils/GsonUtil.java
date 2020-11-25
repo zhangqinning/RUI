@@ -3,7 +3,7 @@ package com.music.lib_common_ui.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.music.lib_api.user.AudioBean;
+import com.music.lib_api.model.song.AudioBean;
 
 import java.util.ArrayList;
 

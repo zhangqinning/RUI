@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.music.lib_api.user.AudioBean;
-import com.music.lib_api.user.LoginBean;
+import com.music.lib_api.model.song.AudioBean;
+import com.music.lib_api.model.user.LoginBean;
 
 import java.util.ArrayList;
 import java.util.List;
