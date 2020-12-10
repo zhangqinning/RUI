@@ -19,8 +19,8 @@ import com.example.lib_architecture.R
 
 abstract class DataBindingActivity : AppCompatActivity() {
 
-    private val mActivityViewModelProvider: ViewModelProvider by lazy { ViewModelProvider(this) }
-    private val mApplicationViewModelProvider: ViewModelProvider by lazy {
+    val mActivityViewModelProvider: ViewModelProvider by lazy { ViewModelProvider(this) }
+    val mApplicationViewModelProvider: ViewModelProvider by lazy {
         ViewModelProvider(
             applicationContext as BaseApplication,
             getAppFactory(this)
