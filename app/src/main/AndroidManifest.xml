@@ -17,15 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RUI"
         android:usesCleartextTraffic="true">
-        <activity android:name=".page.SplashActivity">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".page.login.PhoneLoginActivity" />
-        <activity android:name=".page.login.LoginActivity" />
+        <activity android:name=".ui.page.login.PhoneLoginActivity" />
+        <activity android:name=".ui.page.login.LoginActivity" />
     </application>
 
 </manifest>

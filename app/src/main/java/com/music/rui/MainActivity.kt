@@ -3,11 +3,11 @@ package com.music.rui
 import android.os.Bundle
 import android.view.View
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import com.music.lib_architecture.ui.page.BaseActivity
 import com.music.lib_architecture.ui.page.DataBindingConfig
 import com.music.rui.ui.state.MainActivityViewModel
 import com.music.rui.ui.state.SharedViewModel
-import timber.log.Timber
 
 class MainActivity : BaseActivity() {
 
@@ -16,8 +16,10 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        Timber.d("MainActivity onCreate ")
+
+        mSharedViewModel.toCloseActivityIfAllowed.observeInActivity(this) {
+
+        }
 
 
     }
@@ -32,7 +34,7 @@ class MainActivity : BaseActivity() {
             .addBindingParam(BR.vm, EventHandler())
     }
 
-   inner class EventHandler : DrawerLayout.SimpleDrawerListener() {
+    inner class EventHandler : DrawerLayout.SimpleDrawerListener() {
         override fun onDrawerOpened(drawerView: View) {
             super.onDrawerOpened(drawerView)
             mMainActivityViewModel.isDrawerOpened.set(true)

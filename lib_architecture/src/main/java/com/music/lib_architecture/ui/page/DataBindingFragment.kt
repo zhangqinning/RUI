@@ -25,9 +25,9 @@ abstract class DataBindingFragment : Fragment() {
 
     lateinit var mBinding: ViewDataBinding
     private var mAnimationLoaded = false
-    private val fragmentProvider by lazy { ViewModelProvider(this) }
-    private val activityProvider by lazy { ViewModelProvider(requireActivity()) }
-    private val mApplicationViewModelProvider: ViewModelProvider by lazy {
+     val fragmentProvider by lazy { ViewModelProvider(this) }
+     val activityProvider by lazy { ViewModelProvider(requireActivity()) }
+     val mApplicationViewModelProvider: ViewModelProvider by lazy {
         ViewModelProvider(
                 requireActivity().applicationContext as BaseApplication,
                 getAppFactory(requireActivity())

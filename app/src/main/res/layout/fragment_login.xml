@@ -9,7 +9,7 @@
 
         <variable
             name="click"
-            type="com.music.rui.page.login.LoginActivity.ClickProxy" />
+            type="com.music.rui.ui.page.login.LoginActivity" />
     </data>
 
     <RelativeLayout

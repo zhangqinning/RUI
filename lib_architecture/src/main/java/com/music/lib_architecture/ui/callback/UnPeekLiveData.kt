@@ -5,6 +5,14 @@ import androidx.lifecycle.Observer
 
 class UnPeekLiveData<T> : ProtectedUnPeekLiveData<T>() {
 
+    public override fun setValue(value:T){
+        super.setValue(value)
+    }
+
+    public override fun postValue(value:T){
+        super.postValue(value)
+    }
+
     @Deprecated("")
     override fun observe(owner: LifecycleOwner, observer: Observer<in T?>) {
         throw IllegalArgumentException(

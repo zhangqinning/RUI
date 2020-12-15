@@ -8,7 +8,7 @@
 
         <variable
             name="proxy"
-            type="com.music.rui.page.login.PhoneLoginActivity.ClickProxy" />
+            type="com.music.rui.ui.page.login.PhoneLoginActivity" />
 
         <variable
             name="listener"

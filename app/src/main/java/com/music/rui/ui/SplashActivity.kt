@@ -1,4 +1,4 @@
-package com.music.rui.page
+package com.music.rui.ui
 
 import android.Manifest
 import android.content.Intent
@@ -10,7 +10,7 @@ import com.music.lib_architecture.utils.Utils
 import com.music.lib_common_ui.utils.SharePreferenceUtil
 import com.music.rui.MainActivity
 import com.music.rui.R
-import com.music.rui.page.login.LoginActivity
+import com.music.rui.ui.page.login.LoginActivity
 import io.reactivex.rxjava3.core.Observable
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions

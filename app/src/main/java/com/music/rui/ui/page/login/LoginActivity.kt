@@ -1,4 +1,4 @@
-package com.music.rui.page.login
+package com.music.rui.ui.page.login
 
 import android.content.Intent
 import com.music.lib_architecture.ui.page.BaseActivity
