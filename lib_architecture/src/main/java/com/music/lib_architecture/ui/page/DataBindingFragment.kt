@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.pm.ApplicationInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,15 +26,6 @@ abstract class DataBindingFragment : Fragment() {
 
     lateinit var mBinding: ViewDataBinding
     private var mAnimationLoaded = false
-     val fragmentProvider by lazy { ViewModelProvider(this) }
-     val activityProvider by lazy { ViewModelProvider(requireActivity()) }
-     val mApplicationViewModelProvider: ViewModelProvider by lazy {
-        ViewModelProvider(
-                requireActivity().applicationContext as BaseApplication,
-                getAppFactory(requireActivity())
-        )
-    }
-
     abstract fun initViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,17 +36,18 @@ abstract class DataBindingFragment : Fragment() {
     abstract fun getDataBindingConfig(): DataBindingConfig
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         val dataBindingConfig = getDataBindingConfig()
+        Log.d("zqn","onCreateView : $dataBindingConfig")
 
         val binding = DataBindingUtil.inflate<ViewDataBinding>(
-                inflater,
-                dataBindingConfig.layout,
-                container,
-                false
+            inflater,
+            dataBindingConfig.layout,
+            container,
+            false
         )
         binding.lifecycleOwner = this
         binding.setVariable(dataBindingConfig.vmVariableId, dataBindingConfig.stateViewModel)
@@ -81,7 +74,7 @@ abstract class DataBindingFragment : Fragment() {
     open fun isDebug(): Boolean {
         return requireActivity().applicationContext.applicationInfo != null &&
                 requireActivity().applicationContext
-                        .applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+                    .applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
     }
 
     protected open fun showLongToast(text: String?) {
@@ -100,12 +93,6 @@ abstract class DataBindingFragment : Fragment() {
         showShortToast(requireActivity().applicationContext.getString(stringRes))
     }
 
-    fun <T : ViewModel> getFragmentViewModle(@NonNull modelClass: Class<T>) =
-            fragmentProvider.get(modelClass)
-
-    fun <T : ViewModel> getActivityViewModle(@NonNull modelClass: Class<T>) =
-            activityProvider.get(modelClass)
-
     fun getAppFactory(activity: Activity): ViewModelProvider.Factory {
         requireActivity()
         return ViewModelProvider.AndroidViewModelFactory.getInstance(checkApplication(activity))
@@ -113,9 +100,9 @@ abstract class DataBindingFragment : Fragment() {
 
     private fun checkApplication(activity: Activity): Application {
         return activity.application
-                ?: throw IllegalStateException(
-                        "Your activity/fragment is not yet attached to "
-                                + "Application. You can't request ViewModel before onCreate call."
-                )
+            ?: throw IllegalStateException(
+                "Your activity/fragment is not yet attached to "
+                        + "Application. You can't request ViewModel before onCreate call."
+            )
     }
 }

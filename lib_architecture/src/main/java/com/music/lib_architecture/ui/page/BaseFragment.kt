@@ -8,8 +8,18 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import org.jetbrains.annotations.NotNull
 import android.os.Handler
+import androidx.lifecycle.ViewModelProvider
 
 abstract class BaseFragment : DataBindingFragment() {
+
+    private val fragmentProvider by lazy { ViewModelProvider(this) }
+    private val activityProvider by lazy { ViewModelProvider(requireActivity()) }
+    private val mApplicationViewModelProvider: ViewModelProvider by lazy {
+        ViewModelProvider(
+            requireActivity().applicationContext as BaseApplication,
+            getAppFactory(requireActivity())
+        )
+    }
 
     companion object {
         val HANDLER: Handler by lazy {

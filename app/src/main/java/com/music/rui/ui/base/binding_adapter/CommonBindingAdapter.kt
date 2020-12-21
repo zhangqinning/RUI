@@ -2,6 +2,8 @@ package com.music.rui.ui.base.binding_adapter
 
 import android.view.View
 import androidx.databinding.BindingAdapter
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.music.lib_architecture.utils.ClickUtils
 import com.music.lib_common_ui.widget.CaptchaView
 
@@ -26,6 +28,24 @@ class CommonBindingAdapter {
         @BindingAdapter(value = ["onClickWithDebouncing"], requireAll = false)
         fun onClickWithDebouncing(view: View?, clickListener: View.OnClickListener?) {
             ClickUtils.applySingleDebouncing(view, clickListener)
+        }
+
+        @JvmStatic
+        @BindingAdapter(value = ["currentItem"])
+        fun setCurrentItem(viewPager: ViewPager, item: Int) {
+            viewPager.currentItem = item
+        }
+
+        @JvmStatic
+        @BindingAdapter(value = ["viewPagerAdapter"])
+        fun setViewPagerAdapter(viewPager: ViewPager, adapter: PagerAdapter) {
+            viewPager.adapter = adapter
+        }
+
+        @JvmStatic
+        @BindingAdapter(value = ["viewPagerOffsetLimit"])
+        fun setViewPagerOffsetLimit(viewPager: ViewPager, limit: Int) {
+            viewPager.offscreenPageLimit = limit
         }
     }
 }

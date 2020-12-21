@@ -31,7 +31,7 @@ class MainActivity : BaseActivity() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.activity_main, BR.vm, mMainActivityViewModel)
-            .addBindingParam(BR.vm, EventHandler())
+            .addBindingParam(BR.event, EventHandler())
     }
 
     inner class EventHandler : DrawerLayout.SimpleDrawerListener() {
