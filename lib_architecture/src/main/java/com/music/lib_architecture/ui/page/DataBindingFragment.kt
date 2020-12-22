@@ -41,7 +41,6 @@ abstract class DataBindingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dataBindingConfig = getDataBindingConfig()
-        Log.d("zqn","onCreateView : $dataBindingConfig")
 
         val binding = DataBindingUtil.inflate<ViewDataBinding>(
             inflater,
