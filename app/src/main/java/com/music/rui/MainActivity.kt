@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import com.music.lib_architecture.ui.page.BaseActivity
 import com.music.lib_architecture.ui.page.DataBindingConfig
+import com.music.lib_common_ui.utils.StatusBarUtil
 import com.music.rui.ui.state.MainActivityViewModel
 import com.music.rui.ui.state.SharedViewModel
 
@@ -16,7 +17,6 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         mSharedViewModel.toCloseActivityIfAllowed.observeInActivity(this) {
 
         }

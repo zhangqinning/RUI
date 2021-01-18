@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -13,25 +14,43 @@
             type="com.music.rui.ui.page.adapter.HomePagerAdapter" />
 
         <variable
+            name="indicatoradapter"
+            type="net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator" />
+
+        <variable
             name="vm"
             type="com.music.rui.ui.state.MainViewModel" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
 
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/indicator"
+            setNavigator="@{indicatoradapter}"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            bind="@id/indicator"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/view_pager"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager.widget.ViewPager
+            app:layout_constraintTop_toBottomOf="@id/indicator"
             android:id="@+id/view_pager"
             currentItem="@{vm.currentItem}"
             viewPagerAdapter="@{adapter}"
             viewPagerOffsetLimit="@{vm.limit}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

@@ -11,7 +11,7 @@ class MainViewModel : ViewModel() {
     val initTabAndPage = ObservableBoolean()
     val channelArray: ObservableField<Array<CHANNEL>> = ObservableField<Array<CHANNEL>>()
     val limit = ObservableInt()
-    val currentItem = ObservableInt()
+    var currentItem = ObservableInt()
 
     init {
         limit.set(1)

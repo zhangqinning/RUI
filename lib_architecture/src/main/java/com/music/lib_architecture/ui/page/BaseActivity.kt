@@ -14,8 +14,7 @@ import com.music.lib_architecture.utils.ScreenUtils
 abstract class BaseActivity : DataBindingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        BarUtils.setStatusBarColor(this, Color.TRANSPARENT)
-        BarUtils.setStatusBarLightMode(this, true)
+        BarUtils.setStatusBarVisibility(this,false)
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(NetworkStateManager.getInstance())
     }

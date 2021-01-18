@@ -1,6 +1,6 @@
 package com.music.rui.data.config
 
-enum class CHANNEL(key: String, value: Int) {
+enum class CHANNEL(val key: String, value: Int) {
     DISCORY("发现",DISCORY_ID),
     PLAY("播放",PLAY_ID)
 }

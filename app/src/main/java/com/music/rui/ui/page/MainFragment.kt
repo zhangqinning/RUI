@@ -9,6 +9,8 @@ import com.music.rui.ui.state.SharedViewModel
 import com.music.rui.BR
 import com.music.rui.R
 import com.music.rui.ui.page.adapter.HomePagerAdapter
+import com.music.rui.ui.page.adapter.IndicatorAdapter
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 
 class MainFragment : BaseFragment() {
 
@@ -30,12 +32,17 @@ class MainFragment : BaseFragment() {
     }
 
     override fun getDataBindingConfig(): DataBindingConfig {
+        val homePagerAdapter = HomePagerAdapter(childFragmentManager, mMainFragment.channelArray.get()!!)
+
         return DataBindingConfig(R.layout.fragment_main, BR.vm, mMainFragment)
             .addBindingParam(BR.click, ClickProxy())
-            .addBindingParam(
-                BR.adapter,
-                HomePagerAdapter(childFragmentManager, mMainFragment.channelArray.get()!!)
-            )
+            .addBindingParam(BR.adapter, homePagerAdapter)
+            .addBindingParam(BR.indicatoradapter, CommonNavigator(requireContext()).apply {
+                adapter = IndicatorAdapter(mMainFragment.channelArray.get()!!) { index ->
+                    mMainFragment.currentItem.set(index)
+                }
+            })
+            .addBindingParam(BR.indicatoradapter, homePagerAdapter)
     }
 
     inner class ClickProxy {
