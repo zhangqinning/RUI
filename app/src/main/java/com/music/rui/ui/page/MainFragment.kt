@@ -2,6 +2,7 @@ package com.music.rui.ui.page
 
 import android.os.Bundle
 import android.view.View
+import androidx.viewpager.widget.ViewPager
 import com.music.lib_architecture.ui.page.BaseFragment
 import com.music.lib_architecture.ui.page.DataBindingConfig
 import com.music.rui.ui.state.MainViewModel
@@ -42,12 +43,29 @@ class MainFragment : BaseFragment() {
                     mMainFragment.currentItem.set(index)
                 }
             })
-            .addBindingParam(BR.indicatoradapter, homePagerAdapter)
+            .addBindingParam(BR.onpagechangelistener,OnPageChangeListener())
     }
 
     inner class ClickProxy {
         fun openMenu() {
             mSharedViewModel.toOpenCloseDrawer.setValue(true)
         }
+    }
+
+    inner class OnPageChangeListener : ViewPager.OnPageChangeListener {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+
+        }
+
+        override fun onPageSelected(position: Int) {
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {
+        }
+
     }
 }

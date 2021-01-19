@@ -47,5 +47,11 @@ class CommonBindingAdapter {
         fun setViewPagerOffsetLimit(viewPager: ViewPager, limit: Int) {
             viewPager.offscreenPageLimit = limit
         }
+
+        @JvmStatic
+        @BindingAdapter(value = ["addOnPageChangerListener"])
+        fun addOnPageChangerListener(viewPager: ViewPager, listener:ViewPager.OnPageChangeListener){
+            viewPager.addOnPageChangeListener(listener)
+        }
     }
 }
