@@ -11,12 +11,14 @@ import com.music.rui.BR
 import com.music.rui.R
 import com.music.rui.ui.page.adapter.HomePagerAdapter
 import com.music.rui.ui.page.adapter.IndicatorAdapter
+import net.lucode.hackware.magicindicator.MagicIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 
 class MainFragment : BaseFragment() {
 
     lateinit var mMainFragment: MainViewModel
     lateinit var mSharedViewModel: SharedViewModel
+    lateinit var mIndicator: MagicIndicator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,6 +27,7 @@ class MainFragment : BaseFragment() {
         ) {
             mSharedViewModel.toCloseActivityIfAllowed.setValue(true)
         }
+        mIndicator = mBinding.root.findViewById(R.id.indicator)
     }
 
     override fun initViewModel() {
@@ -33,7 +36,8 @@ class MainFragment : BaseFragment() {
     }
 
     override fun getDataBindingConfig(): DataBindingConfig {
-        val homePagerAdapter = HomePagerAdapter(childFragmentManager, mMainFragment.channelArray.get()!!)
+        val homePagerAdapter =
+            HomePagerAdapter(childFragmentManager, mMainFragment.channelArray.get()!!)
 
         return DataBindingConfig(R.layout.fragment_main, BR.vm, mMainFragment)
             .addBindingParam(BR.click, ClickProxy())
@@ -43,7 +47,7 @@ class MainFragment : BaseFragment() {
                     mMainFragment.currentItem.set(index)
                 }
             })
-            .addBindingParam(BR.onpagechangelistener,OnPageChangeListener())
+            .addBindingParam(BR.onpagechangelistener, OnPageChangeListener())
     }
 
     inner class ClickProxy {
@@ -58,13 +62,15 @@ class MainFragment : BaseFragment() {
             positionOffset: Float,
             positionOffsetPixels: Int
         ) {
-
+            mIndicator.onPageScrolled(position, positionOffset, positionOffsetPixels)
         }
 
         override fun onPageSelected(position: Int) {
+            mIndicator.onPageSelected(position)
         }
 
         override fun onPageScrollStateChanged(state: Int) {
+            mIndicator.onPageScrollStateChanged(state)
         }
 
     }
